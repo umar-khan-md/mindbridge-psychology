@@ -75,8 +75,10 @@ export function TeamCarousel() {
   }, [isPaused, inView, scrollBy]);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-sand-50">
-      <div className="container-wide">
+    <section ref={sectionRef} className="relative section-padding bg-sand-50">
+      {/* Top gradient blend from white */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-sand-50" aria-hidden="true" />
+      <div className="container-wide relative z-10">
         {/* Header with nav buttons */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
           <div>

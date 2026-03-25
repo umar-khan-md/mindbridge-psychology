@@ -120,8 +120,10 @@ export function PricingPreview() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="section-padding bg-bg-primary">
-      <div className="container-wide">
+    <section ref={ref} className="relative section-padding bg-bg-primary">
+      {/* Top gradient blend from sand-50 */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-sand-50 to-bg-primary" aria-hidden="true" />
+      <div className="container-wide relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <motion.p

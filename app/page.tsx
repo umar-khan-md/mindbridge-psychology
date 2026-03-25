@@ -222,7 +222,15 @@ export default function HomePage() {
         <HowItWorksSteps />
         <TeamCarousel />
         <PricingPreview />
+
+        {/* Gradient transition: light → dark */}
+        <div className="h-32 lg:h-40 bg-gradient-to-b from-bg-primary to-primary-950" aria-hidden="true" />
+
         <Testimonials />
+
+        {/* Gradient transition: dark testimonials → dark CTA */}
+        <div className="h-16 bg-gradient-to-b from-primary-950 to-primary-900" aria-hidden="true" />
+
         <CTABanner />
       </main>
     </PageTransition>

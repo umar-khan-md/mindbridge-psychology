@@ -108,7 +108,7 @@ export function TrustStrip() {
   return (
     <section
       ref={ref}
-      className="relative bg-white py-16 lg:py-20 border-t border-b border-sand-200 overflow-hidden"
+      className="relative bg-white py-16 lg:py-20 overflow-hidden"
     >
       {/* Subtle background pattern */}
       <div

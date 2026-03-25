@@ -143,7 +143,7 @@ export function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-primary-950 overflow-hidden"
+      className="relative pt-32 lg:pt-40 pb-24 lg:pb-32 bg-primary-950 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

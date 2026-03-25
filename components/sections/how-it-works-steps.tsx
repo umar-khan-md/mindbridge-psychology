@@ -143,8 +143,10 @@ export function HowItWorksSteps() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-white">
-      <div className="container-wide">
+    <section ref={ref} className="relative py-24 lg:py-32 bg-white">
+      {/* Top gradient blend from bg-primary */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-bg-primary to-white" aria-hidden="true" />
+      <div className="container-wide relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
           <motion.p

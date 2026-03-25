@@ -243,8 +243,10 @@ export function ServiceGrid() {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-bg-primary" ref={ref}>
-      <div className="container-wide">
+    <section className="relative py-24 lg:py-32 bg-bg-primary" ref={ref}>
+      {/* Top gradient blend from white */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-bg-primary" aria-hidden="true" />
+      <div className="container-wide relative z-10">
         {/* Section header — left-aligned with accent bar */}
         <div className="max-w-2xl mb-16 lg:mb-20">
           <motion.p
