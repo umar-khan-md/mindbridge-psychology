@@ -100,7 +100,7 @@ function EmergencyBar() {
 }
 
 /* --------------------------------------------------------------------------
-   Newsletter signup inline
+   Newsletter signup inline — premium rounded input + accent button
    -------------------------------------------------------------------------- */
 
 function NewsletterSignup() {
@@ -116,10 +116,10 @@ function NewsletterSignup() {
 
   return (
     <div>
-      <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+      <h3 className="text-sm font-semibold text-sand-200 uppercase tracking-wider mb-3">
         Stay Connected
       </h3>
-      <p className="text-sm text-primary-300 mb-4 leading-relaxed">
+      <p className="text-sm text-sand-300/80 mb-4 leading-relaxed">
         Mental health tips and updates delivered to your inbox.
       </p>
       {submitted ? (
@@ -144,23 +144,30 @@ function NewsletterSignup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
             className={cn(
-              "flex-1 min-w-0 rounded-lg px-3.5 py-2.5",
-              "bg-primary-900/80 border border-primary-700/60",
-              "text-sm text-white placeholder:text-primary-400",
-              "focus:outline-none focus:ring-[3px] focus:ring-accent-500/40 focus:border-accent-500/60",
+              "flex-1 min-w-0 rounded-full px-5 py-2.5",
+              "bg-primary-900/80 border border-primary-700/40",
+              "shadow-inner shadow-primary-950/30",
+              "text-sm text-sand-200 placeholder:text-sand-500",
+              "focus:outline-none focus:ring-[3px] focus:ring-accent-500/30 focus:border-accent-500/50",
               "transition-all duration-200",
               "min-h-[44px]"
             )}
           />
-          <Button
+          <button
             type="submit"
-            variant="secondary"
-            size="sm"
-            className="shrink-0 min-h-[44px] h-[44px]"
+            className={cn(
+              "shrink-0 min-h-[44px] h-[44px] px-5 rounded-full",
+              "bg-accent-400 text-primary-950 text-sm font-semibold",
+              "shadow-md shadow-accent-500/20",
+              "hover:bg-accent-300 hover:shadow-lg hover:shadow-accent-500/25",
+              "active:scale-95 active:shadow-sm",
+              "transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-accent-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-950"
+            )}
             aria-label="Subscribe to newsletter"
           >
             Join
-          </Button>
+          </button>
         </form>
       )}
     </div>
@@ -198,9 +205,10 @@ function SocialIcons() {
           href={platform.href}
           className={cn(
             "inline-flex items-center justify-center w-10 h-10 rounded-full",
-            "bg-primary-800/60 text-primary-300",
-            "hover:bg-primary-600 hover:text-white",
-            "transition-all duration-200",
+            "bg-primary-800/60 text-sand-300",
+            "hover:bg-primary-700 hover:text-sand-100",
+            "hover:scale-110",
+            "transition-all duration-200 ease-out",
             "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40",
             "text-xs font-medium"
           )}
@@ -255,22 +263,22 @@ export function Footer() {
               >
                 <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-sm">
                   <Brain
-                    className="h-5 w-5 text-white"
+                    className="h-5 w-5 text-sand-100"
                     aria-hidden="true"
                     strokeWidth={1.8}
                   />
                 </span>
                 <span className="flex items-baseline gap-1">
-                  <span className="font-heading text-xl text-white tracking-tight font-semibold">
+                  <span className="font-heading text-xl text-sand-100 tracking-tight font-semibold">
                     MindBridge
                   </span>
-                  <span className="font-sans text-sm text-primary-400 font-light">
+                  <span className="font-sans text-sm text-sand-400 font-light">
                     Psychology
                   </span>
                 </span>
               </Link>
 
-              <p className="mt-4 text-sm text-primary-300 leading-relaxed max-w-sm">
+              <p className="mt-4 text-sm text-sand-300 leading-relaxed max-w-sm">
                 {SITE_CONFIG.tagline}. Expert clinical and registered
                 psychologists delivering evidence-based therapy from anywhere
                 in Australia.
@@ -283,7 +291,7 @@ export function Footer() {
 
             {/* Column 2 — Services */}
             <div className="lg:col-span-2">
-              <h3 className="text-xs font-semibold text-primary-200 uppercase tracking-widest mb-5">
+              <h3 className="text-xs font-semibold text-sand-200 uppercase tracking-widest mb-5">
                 Services
               </h3>
               <ul className="space-y-3" role="list">
@@ -292,7 +300,10 @@ export function Footer() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "text-sm text-primary-400 hover:text-accent-300 transition-colors duration-200",
+                        "text-sm text-sand-400",
+                        "underline decoration-transparent underline-offset-4 decoration-1",
+                        "hover:decoration-sand-500/60",
+                        "transition-all duration-200",
                         "min-h-[44px] inline-flex items-center",
                         "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40 rounded"
                       )}
@@ -306,7 +317,7 @@ export function Footer() {
 
             {/* Column 3 — Quick Links */}
             <div className="lg:col-span-3">
-              <h3 className="text-xs font-semibold text-primary-200 uppercase tracking-widest mb-5">
+              <h3 className="text-xs font-semibold text-sand-200 uppercase tracking-widest mb-5">
                 Quick Links
               </h3>
               <ul className="space-y-3" role="list">
@@ -315,7 +326,10 @@ export function Footer() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "text-sm text-primary-400 hover:text-accent-300 transition-colors duration-200",
+                        "text-sm text-sand-400",
+                        "underline decoration-transparent underline-offset-4 decoration-1",
+                        "hover:decoration-sand-500/60",
+                        "transition-all duration-200",
                         "min-h-[44px] inline-flex items-center",
                         "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40 rounded"
                       )}
@@ -329,7 +343,7 @@ export function Footer() {
 
             {/* Column 4 — Contact + Newsletter */}
             <div className="lg:col-span-3">
-              <h3 className="text-xs font-semibold text-primary-200 uppercase tracking-widest mb-5">
+              <h3 className="text-xs font-semibold text-sand-200 uppercase tracking-widest mb-5">
                 Contact
               </h3>
               <ul className="space-y-3 mb-8" role="list">
@@ -337,13 +351,16 @@ export function Footer() {
                   <a
                     href={`mailto:${SITE_CONFIG.email}`}
                     className={cn(
-                      "flex items-center gap-2.5 text-sm text-primary-400 hover:text-white transition-colors duration-200 group",
+                      "flex items-center gap-2.5 text-sm text-sand-400 group",
+                      "underline decoration-transparent underline-offset-4 decoration-1",
+                      "hover:decoration-sand-500/60",
+                      "transition-all duration-200",
                       "min-h-[44px]",
                       "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40 rounded"
                     )}
                   >
                     <Mail
-                      className="h-4 w-4 shrink-0 text-primary-500 group-hover:text-primary-300 transition-colors"
+                      className="h-4 w-4 shrink-0 text-primary-500 group-hover:text-primary-400 transition-colors"
                       aria-hidden="true"
                     />
                     {SITE_CONFIG.email}
@@ -353,19 +370,22 @@ export function Footer() {
                   <a
                     href={`tel:${SITE_CONFIG.phoneRaw}`}
                     className={cn(
-                      "flex items-center gap-2.5 text-sm text-primary-400 hover:text-white transition-colors duration-200 group",
+                      "flex items-center gap-2.5 text-sm text-sand-400 group",
+                      "underline decoration-transparent underline-offset-4 decoration-1",
+                      "hover:decoration-sand-500/60",
+                      "transition-all duration-200",
                       "min-h-[44px]",
                       "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40 rounded"
                     )}
                   >
                     <Phone
-                      className="h-4 w-4 shrink-0 text-primary-500 group-hover:text-primary-300 transition-colors"
+                      className="h-4 w-4 shrink-0 text-primary-500 group-hover:text-primary-400 transition-colors"
                       aria-hidden="true"
                     />
                     {SITE_CONFIG.phone}
                   </a>
                 </li>
-                <li className="flex items-center gap-2.5 text-sm text-primary-400 min-h-[44px]">
+                <li className="flex items-center gap-2.5 text-sm text-sand-400 min-h-[44px]">
                   <MapPin
                     className="h-4 w-4 shrink-0 text-primary-500"
                     aria-hidden="true"
@@ -397,12 +417,12 @@ export function Footer() {
           </div>
         </div>
 
-        {/* ---- Acknowledgment of Country — dedicated warm section ---- */}
-        <div className="border-t border-primary-800/50">
+        {/* ---- Acknowledgment of Country — warm earth-tone section ---- */}
+        <div className="border-t border-primary-800/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="bg-gradient-to-r from-primary-900/50 via-primary-900/40 to-accent-950/30 rounded-xl px-6 py-5 border border-accent-900/20">
-              <p className="text-xs text-primary-300/90 leading-relaxed max-w-4xl">
-                <span className="font-semibold text-accent-300/80">
+            <div className="bg-gradient-to-r from-amber-950/30 via-yellow-950/20 to-orange-950/25 rounded-xl px-6 py-5 border border-amber-900/15">
+              <p className="text-xs text-sand-300/90 leading-relaxed max-w-4xl">
+                <span className="font-semibold text-amber-400/70">
                   Acknowledgment of Country
                 </span>{" "}
                 &mdash; We acknowledge Aboriginal and Torres Strait Islander
@@ -417,11 +437,11 @@ export function Footer() {
         </div>
 
         {/* ---- Bottom bar — legal + copyright ---- */}
-        <div className="border-t border-primary-800/50">
+        <div className="border-t border-primary-700/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
               {/* Left: AHPRA + ABN */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-xs text-primary-500">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-xs text-sand-500">
                 <span>AHPRA registered practitioners</span>
                 <span
                   className="hidden sm:inline text-primary-700"
@@ -433,7 +453,7 @@ export function Footer() {
               </div>
 
               {/* Right: Copyright + legal links with dot separators */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-xs text-primary-500">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-xs text-sand-500">
                 <span>
                   &copy; {currentYear} {SITE_CONFIG.name}. All rights reserved.
                 </span>
@@ -449,7 +469,10 @@ export function Footer() {
                       <Link
                         href={link.href}
                         className={cn(
-                          "text-primary-400 hover:text-accent-300 transition-colors duration-200",
+                          "text-sand-400",
+                          "underline decoration-transparent underline-offset-4 decoration-1",
+                          "hover:decoration-sand-500/60",
+                          "transition-all duration-200",
                           "min-h-[44px] sm:min-h-0 inline-flex items-center px-1.5",
                           "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-400/40 rounded"
                         )}

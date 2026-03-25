@@ -175,7 +175,7 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50",
         "transition-all duration-200 ease-out",
         scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-primary-100/60 shadow-sm"
+          ? "bg-white/80 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] border-b-primary-100/60 shadow-sm"
           : "bg-transparent border-b border-transparent"
       )}
     >
@@ -220,15 +220,20 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "relative px-3.5 py-2 rounded-full text-sm font-medium",
+                    "relative px-3.5 py-2 rounded-full text-sm font-medium group",
                     "transition-all duration-200 min-h-[44px] inline-flex items-center",
                     "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-500/40 focus-visible:ring-offset-2",
                     isActive(item.href)
                       ? "text-primary-800 bg-primary-100/80"
-                      : "text-primary-700 hover:text-primary-900 hover:bg-primary-50/80"
+                      : "text-primary-700 hover:text-primary-900"
                   )}
                 >
                   {item.label}
+                  <span className={cn(
+                    "absolute bottom-1 left-3.5 right-3.5 h-px bg-primary-700 origin-left",
+                    "transition-transform duration-200 ease-out",
+                    isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  )} />
                 </Link>
               </span>
             ))}
@@ -361,17 +366,17 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href={ctaNav.href}
-              className="focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-accent-400/40 focus-visible:ring-offset-2 rounded-lg"
+              className="focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary-500/40 focus-visible:ring-offset-2 rounded-lg"
             >
               <Button
-                variant="secondary"
+                variant="primary"
                 size="md"
                 iconLeft={
                   <Calendar className="h-4.5 w-4.5" aria-hidden="true" />
                 }
                 className={cn(
-                  "shadow-lg shadow-accent-500/25 font-bold",
-                  "hover:shadow-xl hover:shadow-accent-500/35",
+                  "shadow-lg shadow-primary-500/25 font-bold",
+                  "hover:shadow-xl hover:shadow-primary-500/35",
                   "hover:-translate-y-0.5",
                   "transition-all duration-200"
                 )}
@@ -596,19 +601,6 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {/* Logo pulse keyframe (one-time on first load, very subtle) */}
-      <style jsx global>{`
-        @keyframes logoPulse {
-          0%   { box-shadow: 0 0 0 0 rgba(13,115,119,0.4); }
-          50%  { box-shadow: 0 0 0 6px rgba(13,115,119,0.0); }
-          100% { box-shadow: 0 0 0 0 rgba(13,115,119,0.0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .motion-safe\\:animate-\\[logoPulse_1\\.5s_ease-out_0\\.3s_1_both\\] {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </header>
   );
 }

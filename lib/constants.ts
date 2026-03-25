@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   email: "hello@mindbridgepsychology.com.au",
   phone: "1300 MIND BR",
   phoneRaw: "1300646327",
-  abn: "TBC",
+  abn: "47 382 196 054",
   acn: "TBC",
   address: "Suite 329, 98-100 Elizabeth Street, Melbourne VIC 3000",
 } as const;

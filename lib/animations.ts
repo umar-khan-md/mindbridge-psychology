@@ -143,11 +143,11 @@ export const mobileMenuOverlay: Variants = {
 export const mobileMenuPanel: Variants = {
   closed: {
     x: "100%",
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { type: "spring", stiffness: 100, damping: 20 },
   },
   open: {
     x: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { type: "spring", stiffness: 100, damping: 20 },
   },
 };
 
@@ -156,7 +156,7 @@ export const mobileNavItem: Variants = {
   open: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { type: "spring", stiffness: 100, damping: 20 },
   },
 };
 

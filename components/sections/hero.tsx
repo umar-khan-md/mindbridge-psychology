@@ -9,7 +9,7 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { ArrowRight, Users, ShieldCheck, DollarSign, Sparkles } from "lucide-react";
+import { ArrowRight, Users, ShieldCheck, DollarSign, Sparkles, Star, Video } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -138,7 +138,7 @@ export function Hero() {
   );
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-primary-950 flex items-center">
+    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden bg-primary-950 flex items-center">
       {/* ---- Animated gradient mesh background (CSS only) ---- */}
       <div className="absolute inset-0">
         {/* Base gradient */}
@@ -211,7 +211,7 @@ export function Hero() {
               <span className="text-sm font-medium text-primary-200/90">
                 Trusted by{" "}
                 <span className="text-white font-bold" style={{ fontVariantNumeric: "tabular-nums" }}>
-                  <AnimatedCounter target={35000} />+
+                  <AnimatedCounter target={4438} />+
                 </span>{" "}
                 Australians
               </span>
@@ -228,9 +228,9 @@ export function Hero() {
             {/* Heading */}
             <motion.h1
               variants={fadeInUpChild}
-              className="font-heading text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-white leading-[1.05] tracking-[-0.03em]"
+              className="font-heading text-5xl lg:text-6xl xl:text-7xl text-white tracking-tighter leading-none"
             >
-              <span className="motion-safe:hero-shimmer">Expert Psychology,</span>
+              <span className="text-white">Expert Psychology,</span>
               <br />
               <span className="text-accent-300">From the Comfort</span>
               <br />
@@ -256,7 +256,7 @@ export function Hero() {
               <motion.div
                 whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
                 whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
               >
                 <Link
                   href="/practitioners"
@@ -279,7 +279,7 @@ export function Hero() {
               <motion.div
                 whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
                 whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
               >
                 <Link
                   href="/self-assessment"
@@ -301,55 +301,68 @@ export function Hero() {
               variants={fadeInUpChild}
               className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-4"
             >
-              {trustBadges.map((badge) => (
-                <div
-                  key={badge.label}
-                  className="flex items-center gap-2.5 text-[15px] text-primary-200/80"
-                >
+              {trustBadges.map((badge, i) => (
+                <div key={badge.label} className="flex items-center gap-2.5">
+                  {i > 0 && (
+                    <span className="w-px h-4 bg-white/15 -ml-4 mr-1" aria-hidden="true" />
+                  )}
                   <badge.icon className="w-4.5 h-4.5 text-accent-400/70" />
-                  <span className="font-medium">{badge.label}</span>
+                  <span className="text-[15px] text-primary-200/80 font-medium">{badge.label}</span>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right decorative column */}
+          {/* Right decorative column — floating testimonial + video call visual */}
           <div className="hidden lg:block lg:col-span-2" aria-hidden="true">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-              className="relative aspect-square"
-            >
-              {/* Layered botanical shapes */}
-              <div className="absolute inset-0 rounded-[40%_60%_55%_45%/55%_45%_60%_40%] bg-gradient-to-br from-primary-600/20 to-primary-800/20 backdrop-blur-sm border border-primary-500/10" />
-              <div className="absolute inset-4 rounded-[45%_55%_50%_50%/50%_50%_55%_45%] bg-gradient-to-tl from-primary-500/15 to-accent-500/10 backdrop-blur-sm border border-primary-400/10" />
-              <div className="absolute inset-12 rounded-[50%_50%_45%_55%/45%_55%_50%_50%] bg-gradient-to-br from-primary-400/10 to-primary-600/15 backdrop-blur-sm" />
-
-              {/* Center emblem */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary-400/25 to-accent-500/15 flex items-center justify-center border border-primary-300/20 shadow-lg shadow-primary-400/10">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-300/25 to-accent-400/15" />
+            <div className="relative aspect-square">
+              {/* Video call illustration card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30, rotate: -2 }}
+                animate={{ opacity: 1, y: 0, rotate: -2 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                className="absolute top-[8%] left-[5%] right-[10%] rounded-2xl bg-white/[0.06] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md p-5"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary-500/20 border border-primary-400/20 flex items-center justify-center">
+                    <Video className="w-5 h-5 text-primary-300" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-white/90">Secure Video Session</p>
+                    <p className="text-xs text-primary-300/70">End-to-end encrypted</p>
+                  </div>
                 </div>
-              </div>
+                {/* Mock video grid */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="aspect-video rounded-lg bg-primary-800/40 border border-white/5" />
+                  <div className="aspect-video rounded-lg bg-primary-700/30 border border-white/5" />
+                </div>
+              </motion.div>
 
-              {/* Floating micro-dots */}
+              {/* Floating testimonial card */}
               <motion.div
-                className="absolute top-[15%] left-[20%] w-2 h-2 rounded-full bg-accent-400/30"
-                animate={{ y: [0, -8, 0], opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute bottom-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-primary-300/40"
-                animate={{ y: [0, 6, 0], opacity: [0.4, 0.8, 0.4] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-              <motion.div
-                className="absolute top-[60%] left-[10%] w-1 h-1 rounded-full bg-white/20"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              />
-            </motion.div>
+                initial={{ opacity: 0, y: 20, rotate: 2 }}
+                animate={{ opacity: 1, y: 0, rotate: 2 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
+                className="absolute bottom-[12%] left-[2%] right-[6%] rounded-2xl bg-white/[0.07] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md p-5"
+              >
+                <div className="flex gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-accent-400 fill-accent-400" />
+                  ))}
+                </div>
+                <p className="text-sm text-white/80 leading-relaxed mb-3">
+                  &ldquo;I was hesitant about telehealth, but the experience felt as personal as being in the room. My psychologist truly understood me.&rdquo;
+                </p>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400/30 to-accent-400/20 border border-white/10" />
+                  <div>
+                    <p className="text-xs font-medium text-white/70">Verified Patient</p>
+                    <p className="text-xs text-primary-300/50">Melbourne, VIC</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -357,41 +370,6 @@ export function Hero() {
       {/* Bottom gradient divider */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary via-bg-primary/60 to-transparent" />
 
-      {/* ---- keyframe for mesh shift (injected once) ---- */}
-      <style jsx global>{`
-        @keyframes meshShift {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33%      { transform: translate(2%, -1%) scale(1.02); }
-          66%      { transform: translate(-1%, 2%) scale(0.98); }
-        }
-        @keyframes heroShimmer {
-          0%   { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        .hero-shimmer {
-          background: linear-gradient(
-            90deg,
-            rgba(255,255,255,0) 0%,
-            rgba(212,168,83,0.25) 40%,
-            rgba(255,255,255,0.35) 50%,
-            rgba(212,168,83,0.25) 60%,
-            rgba(255,255,255,0) 100%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          background-clip: text;
-          animation: heroShimmer 2s ease-out 0.8s 1 both;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .motion-safe\\:animate-\\[meshShift_18s_ease-in-out_infinite\\] {
-            animation: none !important;
-          }
-          .hero-shimmer {
-            animation: none !important;
-            background: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

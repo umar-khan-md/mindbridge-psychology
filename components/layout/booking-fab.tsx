@@ -61,8 +61,8 @@ export function BookingFab() {
             <span
               className={cn(
                 "absolute bottom-full right-0 mb-3 px-3 py-1.5",
-                "rounded-lg bg-primary-900 text-white text-xs font-medium",
-                "whitespace-nowrap shadow-lg",
+                "rounded-lg bg-primary-900 text-sand-200 text-xs font-medium",
+                "whitespace-nowrap shadow-lg shadow-primary-950/30",
                 "opacity-0 translate-y-1 pointer-events-none",
                 "group-hover:opacity-100 group-hover:translate-y-0",
                 "transition-all duration-200"
@@ -86,14 +86,14 @@ export function BookingFab() {
               className={cn(
                 "inline-flex items-center gap-2",
                 "rounded-full px-6 py-3.5",
-                "bg-accent-500 text-white",
-                "shadow-xl shadow-accent-500/30",
+                "bg-accent-500 text-sand-50",
+                "shadow-xl shadow-accent-600/25",
                 "min-h-[48px]",
-                "transition-all duration-200 ease-out",
-                "hover:bg-accent-600",
-                "hover:shadow-2xl hover:shadow-accent-500/40",
+                "transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+                "hover:bg-accent-400",
+                "hover:shadow-2xl hover:shadow-accent-500/30",
                 "hover:scale-105",
-                "active:scale-100",
+                "active:scale-95 active:shadow-lg",
                 "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-accent-400/50 focus-visible:ring-offset-2",
                 "text-sm font-semibold"
               )}
@@ -102,7 +102,7 @@ export function BookingFab() {
               {/* Pulse beacon — only when idle (not hovered), reduced-motion safe */}
               {!isHovered && (
                 <span
-                  className="absolute inset-0 rounded-full motion-safe:animate-[fabPulse_2.5s_ease-out_infinite] bg-accent-400/20"
+                  className="absolute inset-0 rounded-full motion-safe:animate-[fabPulse_2.5s_ease-out_infinite] bg-accent-400/15"
                   aria-hidden="true"
                 />
               )}
@@ -115,12 +115,12 @@ export function BookingFab() {
           </div>
         </motion.div>
       )}
-      {/* FAB pulse keyframe */}
+      {/* FAB pulse keyframe — subtle, brand-colored */}
       <style jsx global>{`
         @keyframes fabPulse {
-          0%   { transform: scale(1); opacity: 0.4; }
-          50%  { transform: scale(1.6); opacity: 0; }
-          100% { transform: scale(1.6); opacity: 0; }
+          0%   { transform: scale(1); opacity: 0.15; }
+          50%  { transform: scale(1.5); opacity: 0; }
+          100% { transform: scale(1.5); opacity: 0; }
         }
       `}</style>
     </AnimatePresence>

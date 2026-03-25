@@ -92,7 +92,7 @@ const tiers: PricingTier[] = [
   },
   {
     name: "Self-Funded",
-    price: "160",
+    price: "165",
     priceCurrency: "From $",
     priceSubtext: "per session",
     description: "No referral needed, no session limits",
@@ -199,7 +199,7 @@ export function PricingPreview() {
 
         {/* Pricing cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto items-stretch"
+          className="grid grid-cols-1 md:grid-cols-[1fr_1.08fr_1fr] gap-6 lg:gap-8 max-w-5xl mx-auto items-stretch"
           variants={pricingContainerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -215,23 +215,11 @@ export function PricingPreview() {
                   : ""
               )}
             >
-              {/* Gradient glow wrapper for featured card with subtle pulse */}
+              {/* Warm tinted shadow border for featured card */}
               {tier.highlighted && (
-                <motion.div
-                  className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-primary-500 via-primary-600 to-accent-500"
+                <div
+                  className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-primary-500/80 via-primary-600/70 to-accent-600/60"
                   aria-hidden="true"
-                  animate={
-                    prefersReducedMotion
-                      ? { opacity: 0.8 }
-                      : {
-                          opacity: [0.7, 0.9, 0.7],
-                        }
-                  }
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
                 />
               )}
 
@@ -239,7 +227,7 @@ export function PricingPreview() {
                 className={cn(
                   "relative rounded-2xl p-7 lg:p-8 flex flex-col flex-grow",
                   tier.highlighted
-                    ? "bg-primary-900 text-white shadow-2xl shadow-primary-900/30"
+                    ? "bg-primary-900 text-white shadow-2xl shadow-primary-800/40"
                     : "bg-white border border-border-default"
                 )}
               >
@@ -323,7 +311,7 @@ export function PricingPreview() {
                     )}
                   />
 
-                  {/* Features with green check circles */}
+                  {/* Features with teal check circles */}
                   <ul className="space-y-3 mb-8 flex-grow">
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3 text-sm">
@@ -360,7 +348,7 @@ export function PricingPreview() {
                   {/* CTA */}
                   <motion.div
                     whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
-                    whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
+                    whileTap={prefersReducedMotion ? {} : { scale: 0.98, y: 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   >
                     <Link

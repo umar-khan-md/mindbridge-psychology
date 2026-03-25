@@ -36,7 +36,7 @@ function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
-            delay: i * 0.07,
+            delay: i * 0.05,
             duration: 0.25,
             ease: [0.25, 1, 0.5, 1],
           }}
@@ -69,14 +69,14 @@ function TestimonialCard({
   return (
     <div
       className={cn(
-        "relative bg-gradient-to-br from-primary-900/70 to-primary-950/60 backdrop-blur-sm rounded-2xl p-6 lg:p-7 border transition-all duration-300",
+        "relative bg-gradient-to-br from-primary-900/70 to-primary-950/60 backdrop-blur-sm rounded-2xl p-6 lg:p-7 border shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300",
         isActive
           ? "border-primary-600/40 shadow-lg shadow-primary-950/30 scale-100 opacity-100"
           : "border-primary-800/30 opacity-70 scale-[0.97]"
       )}
     >
       {/* Decorative quote SVG */}
-      <QuoteMark className="absolute top-4 right-4 w-10 h-10 text-primary-500/15" />
+      <QuoteMark className="absolute top-4 right-4 w-10 h-10 text-primary-400/15" />
 
       {/* Stars */}
       <div className="mb-4">
@@ -183,7 +183,7 @@ export function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-[1fr_1.15fr_1fr] gap-5 max-w-5xl mx-auto items-center"
         >
           {visibleIndices.map((tIdx, posIdx) => (
             <AnimatePresence mode="wait" key={posIdx}>
@@ -194,8 +194,9 @@ export function Testimonials() {
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                 className={cn(
-                  posIdx === 0 && "hidden md:block",
-                  posIdx === 2 && "hidden md:block"
+                  posIdx === 0 && "hidden md:block md:translate-y-4",
+                  posIdx === 1 && "md:-translate-y-3",
+                  posIdx === 2 && "hidden md:block md:translate-y-4"
                 )}
               >
                 <TestimonialCard
