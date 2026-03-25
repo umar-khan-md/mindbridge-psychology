@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Lora } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { CrisisBanner } from "@/components/layout/crisis-banner";
+import { CrisisBanner } from "@/components/layout/crisis-strip";
 import { BookingFab } from "@/components/layout/booking-fab";
 import { ToastProvider } from "@/components/ui/toast";
 import "./globals.css";

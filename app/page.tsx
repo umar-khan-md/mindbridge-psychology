@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/hero";
+import { HeroIntro } from "@/components/sections/hero-intro";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { ServiceGrid } from "@/components/sections/service-grid";
 import { PageTransition } from "@/components/ui/page-transition";
@@ -212,27 +213,26 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <PageTransition>
-      <main>
-        {/* Above-fold — eagerly loaded for fast LCP */}
-        <Hero />
-        <TrustStrip />
-        <ServiceGrid />
+      {/* Above-fold — eagerly loaded for fast LCP */}
+      <Hero />
+      <HeroIntro />
+      <TrustStrip />
+      <ServiceGrid />
 
-        {/* Below-fold — lazy loaded with skeleton placeholders */}
-        <HowItWorksSteps />
-        <TeamCarousel />
-        <PricingPreview />
+      {/* Below-fold — lazy loaded with skeleton placeholders */}
+      <HowItWorksSteps />
+      <TeamCarousel />
+      <PricingPreview />
 
-        {/* Gradient transition: light → dark */}
-        <div className="h-32 lg:h-40 bg-gradient-to-b from-bg-primary to-primary-950" aria-hidden="true" />
+      {/* Gradient transition: light → dark */}
+      <div className="h-32 lg:h-40 bg-gradient-to-b from-bg-primary to-primary-950" aria-hidden="true" />
 
-        <Testimonials />
+      <Testimonials />
 
-        {/* Gradient transition: dark testimonials → dark CTA */}
-        <div className="h-16 bg-gradient-to-b from-primary-950 to-primary-900" aria-hidden="true" />
+      {/* Gradient transition: dark testimonials → dark CTA */}
+      <div className="h-16 bg-gradient-to-b from-primary-950 to-primary-900" aria-hidden="true" />
 
-        <CTABanner />
-      </main>
+      <CTABanner />
     </PageTransition>
   );
 }

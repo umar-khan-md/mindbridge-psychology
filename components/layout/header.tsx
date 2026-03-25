@@ -172,12 +172,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50",
+        "fixed left-0 right-0 z-50",
         "transition-all duration-200 ease-out",
         scrolled
           ? "bg-white/80 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] border-b-primary-100/60 shadow-sm"
           : "bg-transparent border-b border-transparent"
       )}
+      style={{ top: "var(--crisis-banner-h, 0px)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
