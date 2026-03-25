@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -88,6 +88,7 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeSection, setActiveSection] = useState(0);
+  const [pastIntro, setPastIntro] = useState(false);
 
   // Total scroll height = 4 screen heights (one per text section)
   // plus initial hero content
@@ -108,11 +109,10 @@ export function Hero() {
       Math.floor(progress * scrollSections.length)
     );
     setActiveSection(sectionIndex);
+    setPastIntro(progress > 0.08);
   });
 
-  // Opacity transforms for the intro content (fades out as you scroll)
-  const introOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
-  const introY = useTransform(scrollYProgress, [0, 0.12], [0, -60]);
+  // No longer using useTransform for intro — using pastIntro state toggle instead
 
   // Video scale — slight zoom as you scroll
   const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
@@ -147,11 +147,16 @@ export function Hero() {
         </motion.div>
 
         {/* ---- Intro content (visible at scroll start, fades out) ---- */}
+        <AnimatePresence>
+        {!pastIntro && (
         <motion.div
+          key="intro"
+          initial={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40, filter: "blur(6px)" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 z-20 flex items-center"
-          style={{ opacity: introOpacity, y: introY, pointerEvents: "none" }}
         >
-          <div className="container-wide w-full" style={{ pointerEvents: "auto" }}>
+          <div className="container-wide w-full">
             <div className="max-w-3xl space-y-6">
               {/* Social proof pill */}
               <motion.div
@@ -297,12 +302,14 @@ export function Hero() {
             </div>
           </div>
         </motion.div>
+        )}
+        </AnimatePresence>
 
         {/* ---- Scroll-driven text sections (appear as video plays) ---- */}
         <div className="absolute inset-0 z-30 flex items-center pointer-events-none">
           <div className="container-wide w-full">
             <AnimatePresence mode="wait">
-              {scrollYProgress.get() > 0.08 && (
+              {pastIntro && (
                 <motion.div
                   key={activeSection}
                   initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
@@ -345,7 +352,7 @@ export function Hero() {
               key={i}
               className={cn(
                 "w-2 h-2 rounded-full transition-all duration-300",
-                activeSection === i && scrollYProgress.get() > 0.08
+                activeSection === i && pastIntro
                   ? "bg-accent-400 scale-125"
                   : "bg-white/25"
               )}
