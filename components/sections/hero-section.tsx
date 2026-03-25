@@ -110,7 +110,7 @@ function getMomentOpacity(progress: number, moment: ScrollMoment): number {
    Uses direct DOM manipulation (no React state) for 60fps fluidity
    ------------------------------------------------------------------ */
 
-const SCROLL_HEIGHT_VH = 800;
+const SCROLL_HEIGHT_VH = 400;
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -228,7 +228,7 @@ export function Hero() {
             playsInline
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"
-            style={{ willChange: "transform" }}
+            style={{ willChange: "transform", objectPosition: "center 60%" }}
           />
           {/* Dynamic dark overlay */}
           <motion.div
