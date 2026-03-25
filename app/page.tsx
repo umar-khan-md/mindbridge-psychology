@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Hero } from "@/components/sections/hero";
+import { Hero } from "@/components/sections/hero-section";
 import { HeroIntro } from "@/components/sections/hero-intro";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { ServiceGrid } from "@/components/sections/service-grid";
